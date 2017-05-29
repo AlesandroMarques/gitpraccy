@@ -4,9 +4,12 @@ public class dosomething {
 
     public static void main(String[] args) {
 
-    people [] parray = new people[5];
+    people [] parray = new people[2];
     parray = fillpeopleArray(parray);
     displayPeople(parray);
+        raiseBylocation(parray);
+        displayPeople(parray);
+
     }
     public static people [] fillpeopleArray(people [] parray ){
         Scanner scan = new Scanner(System.in);
@@ -30,6 +33,21 @@ public class dosomething {
         }
 
 
+    }
+
+    public static void raiseBylocation(people [] parray){
+        for (int i = 0; i <parray.length ; i++) {
+            if (parray[i].location.equalsIgnoreCase("warden")){
+                int r = (int)(parray[i].salary * .05);
+
+                parray[i].raise(r);
+
+            }
+
+        }
+
+
+        //return parray;
     }
 
 }
