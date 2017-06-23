@@ -33,7 +33,8 @@ public deployProperties(String type, String name , String pw, String schema ){
 
 
 
-}public deployProperties(){
+}// in mdmiaService uses a null object to call the dispDeployProperties method
+public deployProperties(){
         dbtype = null;
         dbname=null;
         dbpassword=null;
@@ -67,7 +68,8 @@ public deployProperties(String type, String name , String pw, String schema ){
 
 
     }
-
+// if no changes are made to properies this is called and ueses currrent settings to create a object in order to check dbname.properties
+    //
     public deployProperties returnDeployProperties(String loc) {
         deployProperties dp =null;
         try {
@@ -118,7 +120,8 @@ public deployProperties(String type, String name , String pw, String schema ){
 
         }
     }
-    // save old objects and new one created
+    //because objects are saved in a text, there is no way to append so this method resaves all old objects and saves
+    //the new object created
     public void writeDeployObj(deployProperties[] all){
 
         // deployProperties dbj1 = new deployProperties(type, name, pw, schema);
@@ -150,6 +153,7 @@ public deployProperties(String type, String name , String pw, String schema ){
             ObjectInputStream o = new ObjectInputStream(f);
 
             int i=0;
+            // calculates how many saved objects there are
             while (true){
                 try {
                     deployProperties dbj2 = (deployProperties)o.readObject();
@@ -163,7 +167,7 @@ public deployProperties(String type, String name , String pw, String schema ){
             f.close();
             o.close();
 
-
+            //saves the saved objects into a array
             f = new FileInputStream(new File(location));
             o = new ObjectInputStream(f);
             System.out.println("number of saved settings "+i);
@@ -177,7 +181,7 @@ public deployProperties(String type, String name , String pw, String schema ){
 
             o.close();
             f.close();
-
+            //displays saved objects
             for (int x=0; x<all.length;x++){
                 System.out.print(x + ": ");
                 System.out.println(all[x].toString());
@@ -190,7 +194,7 @@ public deployProperties(String type, String name , String pw, String schema ){
             ex.printStackTrace();
 
         }
-
+        //returns saved objects to be used to change settings
         return all;
 
     }

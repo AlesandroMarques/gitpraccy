@@ -26,7 +26,7 @@ public class BVTproperties implements Serializable {
         pBVTdomain = null;
 
     }
-
+//displays current bvt settings
     public void dispBVTProperties(String loc) {
 
         try {
@@ -51,6 +51,7 @@ public class BVTproperties implements Serializable {
 
 
     }
+    // changes BVT settings
     public void changeBVTProperties(String loc) {
         try {
             //File f = new File("deploy.properties");
@@ -70,8 +71,8 @@ public class BVTproperties implements Serializable {
 
         }
     }
-
-    public BVTproperties[] readBVTObj(){
+// gets all saved settings and displays them
+public BVTproperties[] readBVTObj(){
         BVTproperties all[] = null;
         // deployProperties a = new deployProperties();
         try{
@@ -79,6 +80,7 @@ public class BVTproperties implements Serializable {
             ObjectInputStream o = new ObjectInputStream(f);
 
             int i=0;
+            // calculates how many saved objects there are
             while (true){
                 try {
                     BVTproperties dbj2 = (BVTproperties)o.readObject();
@@ -92,7 +94,7 @@ public class BVTproperties implements Serializable {
             f.close();
             o.close();
 
-
+            //saved saved objects into array
             f = new FileInputStream(new File(location));
             o = new ObjectInputStream(f);
             System.out.println("All possible BVT settings "+i);
@@ -106,7 +108,7 @@ public class BVTproperties implements Serializable {
 
             o.close();
             f.close();
-
+            //displays saved objects
             for (int x=0; x<all.length;x++){
                 System.out.print(x + ": ");
                 System.out.println(all[x].toString());
@@ -123,7 +125,7 @@ public class BVTproperties implements Serializable {
         return all;
 
     }
-
+// used to save objects , only used when objects are 1st created because there are only 5 possible bvt settings
     public void writeBVTObj(BVTproperties[] all){
 
         // deployProperties dbj1 = new deployProperties(type, name, pw, schema);

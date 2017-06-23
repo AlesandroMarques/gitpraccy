@@ -41,7 +41,7 @@ version=vers;
 
 
 
-
+// displays properties for a cateloged db , dbname.properties
     public static void dispDbProperties(String loc, deployProperties dp) {
 
         try {
@@ -70,7 +70,7 @@ version=vers;
 
 
     }
-
+// changes dbname.properties to current objects vales
     public void changeDbProperties(String loc) {
         try {
             //File f = new File("deploy.properties");
@@ -96,14 +96,14 @@ version=vers;
         }
     }
 
-// that have same db name
+// displays and returns all saved dp properties objects with the given dbname
     public dbProperties[] readDbObj(deployProperties dp){
         dbProperties all[] = null;
         // deployProperties a = new deployProperties();
         try{
             FileInputStream f = new FileInputStream(new File(location));
             ObjectInputStream o = new ObjectInputStream(f);
-
+            //checks how many saved objects there are with the correct dbname
             int i=0;
             while (true){
                 try {
@@ -119,7 +119,7 @@ version=vers;
             f.close();
             o.close();
 
-
+           // saved these objects with correct dbname into an array
             f = new FileInputStream(new File(location));
             o = new ObjectInputStream(f);
             System.out.println("number of saved settings with dbname "+ dp.dbname +" : "+i);
@@ -136,7 +136,7 @@ version=vers;
 
             o.close();
             f.close();
-
+            // displays saved objects
             for (int x=0; x<all.length;x++){
                 System.out.print(x + ": ");
                 System.out.println(all[x].toString());
@@ -154,7 +154,7 @@ version=vers;
         return all;
 
     }
-
+// reads all db objects used for writing objects back to file
     public dbProperties[] readAllDbObj(){
         dbProperties all[] = null;
         // deployProperties a = new deployProperties();
@@ -197,7 +197,7 @@ version=vers;
 
     }
 
-
+// saves old objects back to the text file and saves the new object
     public void writeDbObj(){
         dbProperties all[] = readAllDbObj();
         // deployProperties dbj1 = new deployProperties(type, name, pw, schema);
