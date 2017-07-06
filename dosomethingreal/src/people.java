@@ -18,4 +18,15 @@ public class people {
     public void display(){
         System.out.println(name + "  " + location + "  "+ salary   );
     }
+
+
+    public void raise(int r){
+        salary = salary+ r;
+
+    }
+
+    public void move(String l){
+        location=l;
+    }
+
 }
