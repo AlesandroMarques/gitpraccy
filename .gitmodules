@@ -1,3 +1,6 @@
 [submodule "newSubPreccy"]
 	path = newSubPreccy
 	url = git://github.com/AlesandroMarques/subPraccy.git
+[submodule "subPraccy"]
+	path = subPraccy
+	url = https://github.com/AlesandroMarques/subPraccy.git
